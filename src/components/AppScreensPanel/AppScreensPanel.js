@@ -1,17 +1,19 @@
 import React, { Component } from "react";
+import classNames from "classnames";
 import "./styles.scss";
 import ProjectTabs from "../ProjectTabs/ProjectTabs";
-import ScreenShot from "../AppScreenShot";
+import { ReactComponent as YellowCircle } from "../../svgs/YellowCircle.svg";
 
 class AppScreensPanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      width: 0,
+      deselected: false,
       height: 0,
-      projects: ["CryptoWatch", "Spots", "KelseyLovesArt"]
+      width: 0,
+      activeProject: this.props.activeProject,
+      projects: this.props.projectList
     };
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
   componentDidMount() {
@@ -23,42 +25,91 @@ class AppScreensPanel extends Component {
     window.removeEventListener("resize", this.updateWindowDimensions);
   }
 
-  updateWindowDimensions() {
+  updateWindowDimensions = () => {
     this.setState({ width: window.innerWidth, height: window.innerHeight });
-  }
+  };
 
-  selectProject = () => {
-    console.log("project tab clicked");
+  projectSelected = name => {
+    this.setState({ deselected: true });
+    this.props.selectProject(name);
+    setTimeout(() => {
+      this.setState({ deselected: false });
+    }, 1000);
   };
 
   render() {
+    const { activeProject } = this.props;
+
     return (
       <div
         className="app-screenshots-panel"
-        style={{ height: this.state.height - 72 }}
+        style={{ height: this.state.height - 70 }}
       >
-        <ProjectTabs
-          projectItems={this.state.projects}
-          selectProjectFunc={this.selectProject}
+        <YellowCircle
+          style={{
+            left: "-140px",
+            top: "-130px",
+            zIndex: 6,
+            position: "absolute"
+          }}
         />
-        <div
-          style={{ display: "flex", flexDirection: "row", justifyContent: "space-evenly" }}
-        >
-          <ScreenShot
-            height={this.state.height - 300}
-            width={350}
-            padding={10}
-            imageSrc="https://images.unsplash.com/photo-1529653762956-b0a27278529c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b8b832644f46361bc52ad70b4ad77313&auto=format&fit=crop&w=1351&q=80"
+        <div style={{ display: "flex", justifyContent: "center", zIndex: 7 }}>
+          <ProjectTabs
+            projects={this.state.projects}
+            activeProject={activeProject}
+            selectProjectFunc={this.projectSelected}
           />
-          <div style={{ display: "flex", flexDirection: "column"}}>
-            <ScreenShot height={this.state.height - 700} width={350} padding={25} imageSrc="https://images.unsplash.com/photo-1529653762956-b0a27278529c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b8b832644f46361bc52ad70b4ad77313&auto=format&fit=crop&w=1351&q=80"/>
-            <ScreenShot height={this.state.height - 700} width={350} padding={25} imageSrc="https://images.unsplash.com/photo-1529653762956-b0a27278529c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b8b832644f46361bc52ad70b4ad77313&auto=format&fit=crop&w=1351&q=80"/>
+        </div>
+        <div
+          key={activeProject.name}
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-evenly",
+            zIndex: 7
+          }}
+          className={classNames({
+            ["screen-shots-incoming"]: !this.state.deselected,
+            ["screen-shots-departing"]: this.state.deselected
+          })}
+        >
+          <img
+            height={this.state.height - this.state.height * 0.3}
+            width="30%"
+            style={{ borderRadius: "20px", marginTop: "1em" }}
+            src={activeProject.screenShots[0]}
+            alt="App screen"
+          />
+          <div
+            style={{
+              width: "20%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+          >
+            <img
+              height={this.state.height - this.state.height * 0.65}
+              width="100%"
+              style={{ borderRadius: "20px" }}
+              src={activeProject.screenShots[1]}
+              alt="App screen"
+            />
+            <img
+              height={this.state.height - this.state.height * 0.65}
+              width="100%"
+              style={{ marginTop: "2em", borderRadius: "20px" }}
+              src={activeProject.screenShots[2]}
+              alt="App screen"
+            />
           </div>
-          <ScreenShot
-            height={this.state.height - 300}
-            width={350}
-            padding={10}
-            imageSrc="https://images.unsplash.com/photo-1529653762956-b0a27278529c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b8b832644f46361bc52ad70b4ad77313&auto=format&fit=crop&w=1351&q=80"
+          <img
+            height={this.state.height - this.state.height * 0.3}
+            width="30%"
+            style={{ borderRadius: "20px", marginTop: "1em" }}
+            src={activeProject.screenShots[3]}
+            alt="App screen"
           />
         </div>
       </div>

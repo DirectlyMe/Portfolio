@@ -1,6 +1,45 @@
 .app-features-panel {
   display: flex;
-  width: 40%;
+  flex-direction: column;
+  justify-content: "center";
+  position: relative;
+  width: 35%;
   height: 100%;
-  background-color: #FCFFC5;
+  background-color: #fcffc5;
+  overflow: hidden;
+}
+
+@keyframes slideup {
+  from {
+    margin-top: 200%;
+  }
+  to {
+    margin-top: 20%;
+  }
+}
+
+@keyframes slidedown {
+  from {
+    margin-top: 0%;
+  }
+  to {
+    margin-top: 200%;
+  }
+}
+
+.app-details-incoming {
+  z-index: 5;
+  animation-duration: 1.2s;
+  animation-name: slideup;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  overflow: hidden;
+}
+
+ul {
+  list-style-type: none;
+
+  li {
+    padding: 1em;
+  }
 }

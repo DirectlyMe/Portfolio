@@ -1,8 +1,45 @@
 .app-screenshots-panel {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  position: relative;
+  z-index: 4;
+  width: 65%;
   height: 100%;
   background-color: #8FD7E1;
-  overflow: auto;
+  overflow: hidden;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 200%;
+    width: 100%;
+  }
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+@keyframes slideout {
+  from {
+    margin-left: 0%;
+    width: 100%;
+  }
+  to {
+    margin-left: 200%;
+    width: 100%;
+  }
+}
+
+.screen-shots-incoming {
+  animation-name: slidein;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.screen-shots-departing {
+  animation-name: slideout;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
 }
