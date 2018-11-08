@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./styles.scss";
 
 class NavBar extends Component {
@@ -27,8 +28,8 @@ class NavBar extends Component {
           </div>
         </div>
         <div className="navigationButtons">
-          <li style={{ paddingRight: "2em" }}>Work</li>
-          <li style={{ paddingRight: "3em " }}>About</li>
+          <li style={{ paddingRight: "2em" }}><Link to="/" style={{ textDecoration: "none", color: "black" }}>Work</Link></li>
+          <li style={{ paddingRight: "3em " }}><Link to="/about" style={{ textDecoration: "none", color: "black" }}>About</Link></li>
         </div>
       </nav>
     );

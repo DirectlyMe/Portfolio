@@ -34,7 +34,7 @@ class AppScreensPanel extends Component {
     this.props.selectProject(name);
     setTimeout(() => {
       this.setState({ deselected: false });
-    }, 1000);
+    }, 900);
   };
 
   render() {
@@ -69,8 +69,8 @@ class AppScreensPanel extends Component {
             zIndex: 7
           }}
           className={classNames({
-            ["screen-shots-incoming"]: !this.state.deselected,
-            ["screen-shots-departing"]: this.state.deselected
+            ["screen-shots-incoming"]: !this.state.deselected,  // eslint-disable-line
+            ["screen-shots-departing"]: this.state.deselected   // eslint-disable-line
           })}
         >
           <img

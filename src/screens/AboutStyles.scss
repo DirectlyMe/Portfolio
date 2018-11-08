@@ -1,0 +1,63 @@
+@keyframes large-bubble-slidein {
+  from {
+    right: -200px;
+  }
+  to {
+    right: 0;
+  }
+}
+
+.large-bubble {
+  animation-name: large-bubble-slidein;
+  animation-duration: 1.4s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+}
+
+@keyframes medium-bubble-slidein {
+  from {
+    right: -200px;
+  }
+  to {
+    right: 80px;
+  }
+}
+
+.medium-bubble {
+  animation-name: medium-bubble-slidein;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+}
+
+@keyframes small-bubble-slidein {
+  from {
+    right: -200px;
+  }
+  to {
+    right: 95px;
+  }
+}
+
+.small-bubble {
+  animation-name: small-bubble-slidein;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+}
+
+@keyframes smallest-bubble-slidein {
+  from {
+    right: -200px;
+  }
+  to {
+    right: 75px;
+  }
+}
+
+.smallest-bubble {
+  animation-name: smallest-bubble-slidein;
+  animation-duration: .8s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+}

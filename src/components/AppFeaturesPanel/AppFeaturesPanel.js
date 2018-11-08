@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/fontawesome-free-brands";
-import classNames from "classnames";
 import Tag from "../Tag";
 import { ReactComponent as BlueCircle } from "../../svgs/BlueCircle.svg";
 import { ReactComponent as WhiteCircle } from "../../svgs/WhiteCircle.svg";
@@ -87,8 +86,8 @@ class AppFeaturesPanel extends Component {
         </div>
         <WhiteCircle style={{
             position: "absolute",
-            left: "-210px",
-            bottom: "500px",
+            left: "-230px",
+            bottom: "50%",
             zIndex: "4"
           }}
         />
