@@ -45,8 +45,9 @@ class AboutScreen extends Component {
             display: "flex",
             flexDirection: "row",
             justifyContent: "center",
-            marginRight: "15%"
+            marginRight: "10%"
           }}
+          className="about"
         >
           <img
             alt="Me"

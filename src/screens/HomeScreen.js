@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import MediaQuery from "react-responsive";
 import AppScreensPanel from "../components/AppScreensPanel/AppScreensPanel";
 import AppFeaturesPanel from "../components/AppFeaturesPanel/AppFeaturesPanel";
 
@@ -149,19 +150,26 @@ class HomeScreen extends Component {
   render() {
     console.log("homescreen rendered");
     return (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row"
-          }}
-        >
-          <AppScreensPanel
-            projectList={this.state.projects}
-            activeProject={this.state.activeProject}
-            selectProject={this.setActiveProject}
-          />
-          <AppFeaturesPanel activeProject={this.state.activeProject} />
-        </div>
+      <div>
+        <MediaQuery query="(min-width: 900px)">
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row"
+            }}
+          >
+            <AppScreensPanel
+              projectList={this.state.projects}
+              activeProject={this.state.activeProject}
+              selectProject={this.setActiveProject}
+            />
+            <AppFeaturesPanel activeProject={this.state.activeProject} />
+          </div>
+        </MediaQuery>
+        <MediaQuery query="(max-with: 899px)">
+            
+        </MediaQuery>
+      </div>
     );
   }
 }
