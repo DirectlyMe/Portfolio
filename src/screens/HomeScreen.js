@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import MediaQuery from "react-responsive";
 import AppScreensPanel from "../components/AppScreensPanel/AppScreensPanel";
 import AppFeaturesPanel from "../components/AppFeaturesPanel/AppFeaturesPanel";
+import ProjectListMobile from "../components/ProjectListMobile";
 
 class HomeScreen extends Component {
   constructor(props) {
@@ -148,7 +149,8 @@ class HomeScreen extends Component {
   };
 
   render() {
-    console.log("homescreen rendered");
+
+
     return (
       <div>
         <MediaQuery query="(min-width: 900px)">
@@ -166,8 +168,8 @@ class HomeScreen extends Component {
             <AppFeaturesPanel activeProject={this.state.activeProject} />
           </div>
         </MediaQuery>
-        <MediaQuery query="(max-with: 899px)">
-            
+        <MediaQuery query="(max-width: 600px)">
+            <ProjectListMobile projects={this.state.projects} />
         </MediaQuery>
       </div>
     );
