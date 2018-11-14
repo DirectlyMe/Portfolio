@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import MediaQuery from "react-responsive";
 import { ReactComponent as LrgCircle } from "../svgs/AboutLrgCircle.svg";
 import { ReactComponent as MedCircle } from "../svgs/AboutMedCircle.svg";
 import { ReactComponent as SmlCircle } from "../svgs/AboutSmlCircle.svg";

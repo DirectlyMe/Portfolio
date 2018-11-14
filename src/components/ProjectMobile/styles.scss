@@ -3,6 +3,8 @@
   flex-direction: column;
   width: 100%;
   padding-top: 1.2em;
+  position: relative;
+  z-index: 10;
 }
 
 .app-features {
@@ -13,4 +15,12 @@
 
 ul {
   list-style-type: none;
+}
+
+.show-more-button {
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-size: 22px;
+  padding: .5em;
 }

@@ -1,37 +1,71 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import classNames from "classnames";
 import Slide from "./Slide";
-import RightArrow from './RightArrow';
-import LeftArrow from './LeftArrow';
+import { ReactComponent as RightArrow } from "../../svgs/RightArrow.svg";
+import { ReactComponent as LeftArrow } from "../../svgs/LeftArrow.svg";
 import "./styles.scss";
 
 class Slider extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      images: [],
       currentIndex: 0,
-
+      translateValue: 0,
+      images: this.props.images
     };
   }
 
   goToPrevSlide = () => {
+    if (this.state.currentIndex === 0) {
+      return;
+    }
+
     this.setState(prevState => ({
-      currentIndex: prevState.currentIndex - 1
+      currentIndex: prevState.currentIndex - 1,
+      translateValue: prevState.translateValue + window.innerWidth
     }));
-  }
+  };
 
   goToNextSlide = () => {
+    if (this.state.currentIndex === this.state.images.length - 1) {
+      return this.setState({
+        currentIndex: 0,
+        translateValue: 0
+      });
+    }
+
     this.setState(prevState => ({
-      currentIndex: prevState.currentIndex + 1
+      currentIndex: prevState.currentIndex + 1,
+      translateValue: prevState.translateValue + -window.innerWidth
     }));
-  }
+  };
 
   render() {
+    const { images } = this.state;
+
+    const imageSlides = images.map((image, i) => (
+      <Slide key={i} image={image} />
+    ));
+
     return (
-      <div style={{ height: "412px"}}>
-        <Slide />
-        <RightArrow nextSlideFunc={this.goToNextSlide} />
-        <LeftArrow prevSlideFunc={this.goToPrevSlide} />
+      <div
+        className={classNames(["slider"], {
+          // triggers image slider animation
+          ["slider-leaving"]: !this.props.showMore // eslint-disable-line
+        })}
+      >
+        <div
+          className="slider-wrapper"
+          style={{
+            // image transition animation
+            transform: `translateX(${this.state.translateValue}px)`,
+            transition: "transform ease-out 0.45s"
+          }}
+        >
+          {imageSlides}
+        </div>
+        <LeftArrow className="left-arrow" onClick={this.goToPrevSlide} />
+        <RightArrow className="right-arrow" onClick={this.goToNextSlide} />
       </div>
     );
   }

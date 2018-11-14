@@ -3,25 +3,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Slider from "../Slider/Slider";
 import Tag from "../Tag";
 import { faGithub } from "@fortawesome/fontawesome-free-brands";
+import { ReactComponent as DownArrow } from "../../svgs/DownArrow.svg";
 import "./styles.scss";
 
 class ProjectMobile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showMore: false,
-      project: this.props.project
+      showMore: false
     };
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.project !== prevProps.project) {
-      this.setState({ project: this.props.project });
-    }
-  }
-
   render() {
-    const { name, features, technologies, github, images } = this.state.project;
+    const { name, features, technologies, github, screenShots } = this.props.project;
 
     const appFeatures = features.map(feature => (
       <li key={feature} style={{ padding: ".7em" }}>
@@ -73,12 +67,13 @@ class ProjectMobile extends Component {
             {techList}
           </ul>
           <div
-            style={{ fontSize: "22px", padding: ".5em", textAlign: "center" }}
+            className="show-more-button"
             onClick={() => {
               this.setState(prevState => ({ showMore: !prevState.showMore }));
             }}
           >
-            Images
+            <div>Images</div>
+            <DownArrow />
           </div>
         </div>
       );
@@ -120,16 +115,17 @@ class ProjectMobile extends Component {
               {techList}
             </ul>
             <div
-              style={{ fontSize: "22px", padding: ".5em", textAlign: "center" }}
+              className="show-more-button"
               onClick={() => {
                 this.setState(prevState => ({ showMore: !prevState.showMore }));
               }}
             >
-              Images
+              <div>Images</div>
+              <DownArrow />
             </div>
           </div>
           <div className="app-images">
-            <Slider images={images} />
+            <Slider images={screenShots} showMore={this.state.showMore} />
           </div>
         </div>
       );

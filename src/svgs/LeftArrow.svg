@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="29px" height="64px" viewBox="0 0 29 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="28px" height="63px" viewBox="0 0 28 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
-    <title>Path 3</title>
+    <title>Path 2</title>
     <desc>Created with Sketch.</desc>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <polyline id="Path-3" stroke="#FFFFFF" stroke-width="3" transform="translate(14.666189, 31.868954) scale(-1, 1) translate(-14.666189, -31.868954) " points="2 1 27.332377 30.9948998 2 62.7379078"></polyline>
+        <g id="Homescreen/work-mobile" transform="translate(-6.000000, -1068.000000)" stroke="#000000" stroke-width="4">
+            <polyline id="Path-2" transform="translate(20.500000, 1099.500000) scale(-1, 1) rotate(-90.000000) translate(-20.500000, -1099.500000) " points="-9 1088 21.8580293 1111 50 1088"></polyline>
+        </g>
     </g>
 </svg>
