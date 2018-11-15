@@ -46,8 +46,8 @@ class NavBar extends Component {
               />
               <div
                 style={{
-                  paddingTop: "20px",
-                  paddingLeft: "1em"
+                  paddingLeft: "1em",
+                  marginTop: "12px"
                 }}
               >
                 {name}
@@ -81,7 +81,6 @@ class NavBar extends Component {
             <div className="profileItems">
               <div
                 style={{
-                  paddingTop: "13px",
                   paddingLeft: "1em"
                 }}
               >

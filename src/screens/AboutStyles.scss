@@ -36,3 +36,13 @@
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
+
+@media screen and (max-width: 499px) {
+  .about-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #FCFFB3;
+    margin-top: 60px;
+  }
+}
