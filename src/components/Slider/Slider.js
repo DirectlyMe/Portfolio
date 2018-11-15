@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import classNames from "classnames";
+import Swipeable from "react-swipeable";
 import Slide from "./Slide";
 import { ReactComponent as RightArrow } from "../../svgs/RightArrow.svg";
 import { ReactComponent as LeftArrow } from "../../svgs/LeftArrow.svg";
@@ -48,25 +49,30 @@ class Slider extends Component {
     ));
 
     return (
-      <div
-        className={classNames(["slider"], {
-          // triggers image slider animation
-          ["slider-leaving"]: !this.props.showMore // eslint-disable-line
-        })}
+      <Swipeable
+        onSwipedRight={this.goToPrevSlide}
+        onSwipedLeft={this.goToNextSlide}
       >
         <div
-          className="slider-wrapper"
-          style={{
-            // image transition animation
-            transform: `translateX(${this.state.translateValue}px)`,
-            transition: "transform ease-out 0.45s"
-          }}
+          className={classNames(["slider"], {
+            // triggers image slider animation
+            ["slider-leaving"]: !this.props.showMore // eslint-disable-line
+          })}
         >
-          {imageSlides}
+          <div
+            className="slider-wrapper"
+            style={{
+              // image transition animation
+              transform: `translateX(${this.state.translateValue}px)`,
+              transition: "transform ease-out 0.45s"
+            }}
+          >
+            {imageSlides}
+          </div>
+          <LeftArrow className="left-arrow" onClick={this.goToPrevSlide} />
+          <RightArrow className="right-arrow" onClick={this.goToNextSlide} />
         </div>
-        <LeftArrow className="left-arrow" onClick={this.goToPrevSlide} />
-        <RightArrow className="right-arrow" onClick={this.goToNextSlide} />
-      </div>
+      </Swipeable>
     );
   }
 }

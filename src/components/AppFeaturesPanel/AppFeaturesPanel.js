@@ -86,8 +86,8 @@ class AppFeaturesPanel extends Component {
         </div>
         <WhiteCircle style={{
             position: "absolute",
-            left: "-230px",
-            bottom: "50%",
+            left: "-235px",
+            bottom: "20%",
             zIndex: "4"
           }}
         />

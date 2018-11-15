@@ -12,6 +12,17 @@ class ProjectMobile extends Component {
     this.state = {
       showMore: false
     };
+
+    this.SliderRef = React.createRef();
+  }
+
+  scrollToSlider = () => {
+    setTimeout(() => {
+      window.scrollTo({
+        top: this.SliderRef.current.offsetTop - 160, 
+        behavior: "smooth"
+      });
+    }, 500);
   }
 
   render() {
@@ -124,8 +135,8 @@ class ProjectMobile extends Component {
               <DownArrow />
             </div>
           </div>
-          <div className="app-images">
-            <Slider images={screenShots} showMore={this.state.showMore} />
+          <div className="app-images" ref={this.SliderRef} onLoad={this.scrollToSlider()}>
+            <Slider images={screenShots} showMore={this.state.showMore}  />
           </div>
         </div>
       );

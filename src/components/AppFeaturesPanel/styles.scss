@@ -28,7 +28,8 @@
 }
 
 .app-details-incoming {
-  z-index: 5;
+  position: relative;
+  z-index: 999;
   animation-duration: 1.2s;
   animation-name: slideup;
   animation-timing-function: ease-out;
