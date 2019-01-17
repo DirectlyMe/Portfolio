@@ -3,7 +3,7 @@ import MediaQuery from "react-responsive";
 import { ReactComponent as LrgCircle } from "../svgs/AboutLrgCircle.svg";
 import { ReactComponent as MedCircle } from "../svgs/AboutMedCircle.svg";
 import { ReactComponent as SmlCircle } from "../svgs/AboutSmlCircle.svg";
-import { ReactComponent as SmllestCircle } from "../svgs/AboutSmlestCircle.svg";
+import { ReactComponent as SmallestCircle } from "../svgs/AboutSmlestCircle.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/fontawesome-free-brands";
 import "./AboutStyles.scss";
@@ -109,7 +109,7 @@ class AboutScreen extends Component {
                 className="small-bubble"
                 style={{ position: "absolute", right: 95, top: "63%" }}
               />
-              <SmllestCircle
+              <SmallestCircle
                 className="smallest-bubble"
                 style={{ position: "absolute", right: 78, top: "78%" }}
               />
@@ -137,7 +137,7 @@ class AboutScreen extends Component {
             >
               <p style={{ marginLeft: "6%" }}>Hi there,</p>
               <p style={{ marginTop: "-1%", marginLeft: "6%" }}>
-                Thanks for taking the time to check out my porfolio.
+                Thanks for taking the time to check out my portfolio.
               </p>
               <p style={{ textAlign: "center", marginLeft: "4%" }}>- About me -</p>
               <ul style={{ marginTop: "-5%" }}>
