@@ -1,3 +1,7 @@
+img {
+  box-shadow: 2px 2px 3px rgba(0,0,0,.5);
+}
+
 .app-screenshots-panel {
   display: flex;
   flex-direction: column;
@@ -26,20 +30,44 @@
     width: 100%;
   }
   to {
-    margin-left: 200%;
+    margin-left: 100%;
     width: 100%;
   }
 }
 
 .screen-shots-incoming {
   animation-name: slidein;
-  animation-duration: 1.8s;
+  animation-duration: 1.5s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
 }
 
 .screen-shots-departing {
   animation-name: slideout;
-  animation-duration: 1s;
+  animation-duration: .9s;
   animation-timing-function: ease-in;
+}
+
+.app-screenshots--large-image {
+  width: 28%;
+  border-radius: 15px;
+  margin-top: 2%;
+}
+
+.app-screenshots--small-images-column {
+  width: 17%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (min-width: 1600px) {
+  .app-screenshots--large-image {
+    width: 26%;
+  }
+
+  .app-screenshots--small-images-column {
+    width: 15%;
+  }
 }

@@ -17,52 +17,47 @@ class NavBar extends Component {
     this.highlightRoute();
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      this.highlightRoute();
+    }
+  }
+
+  // changes style of navbar based on route pathname
   highlightRoute = () => {
     if (window.location.pathname === "/") {
       this.setState({ workSelected: true, aboutSelected: false });
     } else if (window.location.pathname === "/about") {
       this.setState({ aboutSelected: true, workSelected: false });
     }
-    console.log(window.location.pathname);
   };
 
   render() {
-    const { imageSrc, name } = this.props;
+    const { name } = this.props;
 
     return (
       <div>
         <MediaQuery query="(min-width: 500px)">
           <nav className="navbar">
-            <div className="profileItems">
-              <img
-                src={imageSrc}
-                style={{
-                  borderRadius: "50%",
-                  height: "65px",
-                  width: "65px",
-                  marginLeft: "1em"
-                }}
-                alt="Me"
-              />
-              <div
-                style={{
-                  paddingLeft: "1em",
-                  marginTop: "12px"
-                }}
-              >
-                {name}
-              </div>
-            </div>
             <div className="navigationButtons">
-              <li style={{ paddingRight: "2em" }}>
-                <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+              <li onClick={this.highlightRoute} className="navbar-li">
+                <Link
+                  to="/"
+                  style={{ textDecoration: "none", color: "black" }}
+                  className={classNames(["nav-button"], {
+                    ["highlight-route-work"]: this.state.workSelected // eslint-disable-line
+                  })}
+                >
                   Work
                 </Link>
               </li>
-              <li style={{ paddingRight: "3em " }}>
+              <li onClick={this.highlightRoute} className="navbar-li">
                 <Link
                   to="/about"
                   style={{ textDecoration: "none", color: "black" }}
+                  className={classNames(["nav-button"], {
+                    ["highlight-route-about"]: this.state.aboutSelected // eslint-disable-line
+                  })}
                 >
                   About
                 </Link>
@@ -79,13 +74,17 @@ class NavBar extends Component {
             })}
           >
             <div className="profileItems">
-              <div
-                style={{
-                  paddingLeft: "1em"
+              <Link
+                className="navbar--name-link"
+                to="/"
+                onClick={() => {
+                  setTimeout(() => {
+                    this.highlightRoute();
+                  }, 0);
                 }}
               >
                 {name}
-              </div>
+              </Link>
             </div>
             <div className="navigationButtons">
               <li style={{ marginRight: ".3em" }} onClick={this.highlightRoute}>
@@ -98,10 +97,7 @@ class NavBar extends Component {
                   Work
                 </Link>
               </li>
-              <li
-                style={{ marginRight: ".3em " }}
-                onClick={this.highlightRoute}
-              >
+              <li style={{ marginRight: ".3em " }} onClick={this.highlightRoute}>
                 <Link
                   to="/about"
                   className={classNames(["nav-button"], {

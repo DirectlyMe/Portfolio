@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import classNames from "classnames";
-import "./styles.scss";
+import { projectTypes } from "../../ProjectsData";
 import ProjectTabs from "../ProjectTabs/ProjectTabs";
 import { ReactComponent as YellowCircle } from "../../svgs/YellowCircle.svg";
+import "./styles.scss";
 
 class AppScreensPanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      deselected: false,
       height: 0,
       width: 0,
       activeProject: this.props.activeProject,
@@ -29,22 +29,17 @@ class AppScreensPanel extends Component {
     this.setState({ width: window.innerWidth, height: window.innerHeight });
   };
 
-  projectSelected = name => {
-    this.setState({ deselected: true });
-    this.props.selectProject(name);
-    setTimeout(() => {
-      this.setState({ deselected: false });
-    }, 900);
-  };
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      this.setState({ deselected: this.props.deselected });
+    }
+  }
 
   render() {
     const { activeProject } = this.props;
 
     return (
-      <div
-        className="app-screenshots-panel"
-        style={{ height: this.state.height - 70 }}
-      >
+      <div className="app-screenshots-panel" style={{ height: this.state.height }}>
         <YellowCircle
           style={{
             left: "-140px",
@@ -57,61 +52,86 @@ class AppScreensPanel extends Component {
           <ProjectTabs
             projects={this.state.projects}
             activeProject={activeProject}
-            selectProjectFunc={this.projectSelected}
+            selectProjectFunc={this.props.selectProject}
           />
         </div>
-        <div
-          key={activeProject.name}
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-evenly",
-            zIndex: 7
-          }}
-          className={classNames({
-            ["screen-shots-incoming"]: !this.state.deselected,  // eslint-disable-line
-            ["screen-shots-departing"]: this.state.deselected   // eslint-disable-line
-          })}
-        >
-          <img
-            height={this.state.height - this.state.height * 0.3}
-            width="30%"
-            style={{ borderRadius: "20px", marginTop: "1em" }}
-            src={activeProject.screenShots[0]}
-            alt="App screen"
-          />
+        {activeProject.type === projectTypes.app ? (
           <div
+            key={activeProject.name}
             style={{
-              width: "20%",
               display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center"
+              flexDirection: "row",
+              justifyContent: "space-evenly",
+              zIndex: 7
             }}
+            className={classNames({
+              ["screen-shots-incoming"]: !this.props.deselected, // eslint-disable-line
+              ["screen-shots-departing"]: this.props.deselected // eslint-disable-line
+            })}
           >
             <img
-              height={this.state.height - this.state.height * 0.65}
-              width="100%"
-              style={{ borderRadius: "20px" }}
-              src={activeProject.screenShots[1]}
+              height={this.state.height - this.state.height * 0.3}
+              className="app-screenshots--large-image"
+              src={activeProject.screenShots[0]}
               alt="App screen"
             />
+            <div
+              className="app-screenshots--small-images-column"
+            >
+              <img
+                height={this.state.height - this.state.height * 0.63}
+                width="100%"
+                style={{ borderRadius: "15px", marginBottom: "2%" }}
+                src={activeProject.screenShots[1]}
+                alt="App screen"
+              />
+              <img
+                height={this.state.height - this.state.height * 0.63}
+                width="100%"
+                style={{ borderRadius: "15px", marginTop: "2%" }}
+                src={activeProject.screenShots[2]}
+                alt="App screen"
+              />
+            </div>
             <img
-              height={this.state.height - this.state.height * 0.65}
-              width="100%"
-              style={{ marginTop: "2em", borderRadius: "20px" }}
-              src={activeProject.screenShots[2]}
+              height={this.state.height - this.state.height * 0.3}
+              className="app-screenshots--large-image"
+              src={activeProject.screenShots[3]}
               alt="App screen"
             />
           </div>
-          <img
-            height={this.state.height - this.state.height * 0.3}
-            width="30%"
-            style={{ borderRadius: "20px", marginTop: "1em" }}
-            src={activeProject.screenShots[3]}
-            alt="App screen"
-          />
-        </div>
+        ) : null}
+        {activeProject.type === projectTypes.web ? (
+          <div
+            key={activeProject.name}
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              zIndex: 7
+            }}
+            className={classNames({
+              ["screen-shots-incoming"]: !this.state.deselected, // eslint-disable-line
+              ["screen-shots-departing"]: this.state.deselected // eslint-disable-line
+            })}
+          >
+            <div style={{ flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+              <img
+                height={this.state.height - this.state.height * 0.50}
+                width="68%"
+                style={{ borderRadius: "10px", marginRight: "2%", marginLeft: "2%", marginBottom: "8%" }}
+                src={activeProject.screenShots[0]}
+                alt="App screen"
+              />
+              <img
+                height={this.state.height - this.state.height * 0.35}
+                width="26%"
+                style={{ borderRadius: "15px", marginTop: "2%" }}
+                src={activeProject.screenShots[1]}
+                alt="App screen"
+              />
+            </div>
+          </div>
+        ) : null}
       </div>
     );
   }

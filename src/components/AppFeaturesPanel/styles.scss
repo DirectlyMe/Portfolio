@@ -9,7 +9,7 @@
   overflow: hidden;
 }
 
-@keyframes slideup {
+@keyframes slide-up {
   from {
     margin-top: 200%;
   }
@@ -18,9 +18,9 @@
   }
 }
 
-@keyframes slidedown {
+@keyframes slide-down {
   from {
-    margin-top: 0%;
+    margin-top: 20%;
   }
   to {
     margin-top: 200%;
@@ -30,9 +30,19 @@
 .app-details-incoming {
   position: relative;
   z-index: 999;
-  animation-duration: 1.2s;
-  animation-name: slideup;
+  animation-duration: .9s;
+  animation-name: slide-up;
   animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  overflow: hidden;
+}
+
+.app-details-outgoing {
+  position: relative;
+  z-index: 999;
+  animation-duration: .9s;
+  animation-name: slide-down;
+  animation-timing-function: ease-in;
   animation-fill-mode: forwards;
   overflow: hidden;
 }
@@ -41,6 +51,6 @@ ul {
   list-style-type: none;
 
   li {
-    padding: 1em;
+    padding: 1.5em;
   }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/fontawesome-free-brands";
+import classnames from "classnames";
 import Tag from "../Tag";
 import { ReactComponent as BlueCircle } from "../../svgs/BlueCircle.svg";
 import { ReactComponent as WhiteCircle } from "../../svgs/WhiteCircle.svg";
@@ -11,13 +12,20 @@ class AppFeaturesPanel extends Component {
     super(props);
     this.state = {
       width: 0,
-      height: 0
+      height: 0,
+      deselected: false
     };
   }
 
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener("resize", this.updateWindowDimensions);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      this.setState({ deselected: this.props.deselected });
+    }
   }
 
   componentWillUnmount() {
@@ -30,27 +38,33 @@ class AppFeaturesPanel extends Component {
 
   render() {
     const { name, features, technologies, github } = this.props.activeProject;
-    const featureList = features.map(feature => (
-      <li key={feature}>{feature}</li>
-    ));
+    const featureList = features.map(feature => <li key={feature}>{feature}</li>);
 
-    const techList = technologies.map(technology => (
-      <Tag text={technology.name} color={technology.color} />
+    const techList = technologies.map((technology, index) => (
+      <Tag key={index} text={technology.name} color={technology.color} />
     ));
 
     return (
       <div
         className="app-features-panel"
         style={{
-          height: this.state.height - 70,
+          height: this.state.height,
           display: "flex"
         }}
       >
-        <div key={name} className="app-details-incoming">
+        <div
+          key={name}
+          className={classnames({
+            ["app-details-incoming"]: !this.props.deselected, // eslint-disable-line
+            ["app-details-outgoing"]: this.props.deselected // eslint-disable-line
+          })}
+        >
           <div
             style={{
+              marginTop: "2%",
               textAlign: "center",
-              fontSize: "35px"
+              fontSize: "36px",
+              fontWeight: "400"
             }}
           >
             {name}
@@ -60,7 +74,9 @@ class AppFeaturesPanel extends Component {
               marginTop: "5%",
               marginBottom: "5%",
               marginRight: "2.2em",
-              textAlign: "center"
+              textAlign: "center",
+              fontSize: "18px",
+              fontWeight: "300"
             }}
           >
             {featureList}
@@ -77,17 +93,19 @@ class AppFeaturesPanel extends Component {
           <ul
             style={{
               marginTop: "20%",
-              marginRight: "1em",
+              marginRight: ".3em",
+              paddingBottom: "5px",
               textAlign: "center"
             }}
           >
             {techList}
           </ul>
         </div>
-        <WhiteCircle style={{
+        <WhiteCircle
+          style={{
             position: "absolute",
-            left: "-235px",
-            bottom: "20%",
+            left: "-225px",
+            bottom: "8%",
             zIndex: "4"
           }}
         />
