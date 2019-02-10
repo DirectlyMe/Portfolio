@@ -18,16 +18,14 @@ class NavBar extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps !== this.props) {
-      this.highlightRoute();
-    }
-  }
+    this.highlightRoute();
+  } 
 
   // changes style of navbar based on route pathname
   highlightRoute = () => {
-    if (window.location.pathname === "/") {
+    if (window.location.pathname === "/" && this.state.aboutSelected) {
       this.setState({ workSelected: true, aboutSelected: false });
-    } else if (window.location.pathname === "/about") {
+    } else if (window.location.pathname === "/about" && this.state.workSelected) {
       this.setState({ aboutSelected: true, workSelected: false });
     }
   };
@@ -40,23 +38,23 @@ class NavBar extends Component {
         <MediaQuery query="(min-width: 500px)">
           <nav className="navbar">
             <div className="navigationButtons">
-              <li onClick={this.highlightRoute} className="navbar-li">
+              <li className="navbar-li">
                 <Link
                   to="/"
                   style={{ textDecoration: "none", color: "black" }}
                   className={classNames(["nav-button"], {
-                    ["highlight-route-work"]: this.state.workSelected // eslint-disable-line
+                    ["highlight-route-work"]: window.location.pathname === "/" // eslint-disable-line
                   })}
                 >
                   Work
                 </Link>
               </li>
-              <li onClick={this.highlightRoute} className="navbar-li">
+              <li className="navbar-li">
                 <Link
                   to="/about"
                   style={{ textDecoration: "none", color: "black" }}
                   className={classNames(["nav-button"], {
-                    ["highlight-route-about"]: this.state.aboutSelected // eslint-disable-line
+                    ["highlight-route-about"]: window.location.pathname === "/about" // eslint-disable-line
                   })}
                 >
                   About
@@ -69,8 +67,8 @@ class NavBar extends Component {
           <nav
             className={classNames(["navbar"], {
               // determines style of the navbar depending on the page
-              ["navbar-work"]: this.state.workSelected, // eslint-disable-line
-              ["navbar-about"]: this.state.aboutSelected // eslint-disable-line
+              ["navbar-work"]: window.location.pathname === "/", // eslint-disable-line
+              ["navbar-about"]: window.location.pathname === "/about" // eslint-disable-line
             })}
           >
             <div className="profileItems">
@@ -87,21 +85,21 @@ class NavBar extends Component {
               </Link>
             </div>
             <div className="navigationButtons">
-              <li style={{ marginRight: ".3em" }} onClick={this.highlightRoute}>
+              <li style={{ marginRight: ".3em" }}>
                 <Link
                   to="/"
                   className={classNames(["nav-button"], {
-                    ["highlight-route"]: this.state.workSelected // eslint-disable-line
+                    ["highlight-route"]: window.location.pathname === "/" // eslint-disable-line
                   })}
                 >
                   Work
                 </Link>
               </li>
-              <li style={{ marginRight: ".3em " }} onClick={this.highlightRoute}>
+              <li style={{ marginRight: ".3em " }}>
                 <Link
                   to="/about"
                   className={classNames(["nav-button"], {
-                    ["highlight-route"]: this.state.aboutSelected // eslint-disable-line
+                    ["highlight-route"]: window.location.pathname === "/about" // eslint-disable-line
                   })}
                 >
                   About

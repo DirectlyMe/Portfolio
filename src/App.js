@@ -10,7 +10,6 @@ class App extends Component {
       <Router>
         <div>
           <NavBar
-            imageSrc="https://s3-us-west-2.amazonaws.com/jackhansen-portfolio.com/Images/general/MVIMG_20180724_111106.jpg"
             name="Jack Hansen"
           />
           <Route exact path="/" component={HomeScreen} />

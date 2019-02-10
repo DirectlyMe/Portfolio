@@ -32,7 +32,7 @@ class ProjectMobile extends Component {
   scrollToSlider = () => {
     setTimeout(() => {
       window.scrollTo({
-        top: this.SliderRef.current.offsetTop - 160, 
+        top: this.SliderRef.current.offsetTop - 100, 
         behavior: "smooth"
       });
     }, 500);
