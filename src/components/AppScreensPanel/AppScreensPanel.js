@@ -85,7 +85,7 @@ class AppScreensPanel extends Component {
                             })}
                         >
                             <img
-                                height={this.state.height - this.state.height * 0.3}
+                                // height={this.state.height - this.state.height * 0.3}
                                 className="app-screenshots--large-image"
                                 src={activeProject.screenShots[0]}
                                 onClick={(e) => this.toggleExpandedScreen(e.target.src)}
@@ -95,7 +95,7 @@ class AppScreensPanel extends Component {
                                 <img
                                     height={this.state.height - this.state.height * 0.63}
                                     width="100%"
-                                    style={{ borderRadius: "10px", marginBottom: "2%" }}
+                                    style={{ borderRadius: "10px", marginBottom: "2%", maxHeight: "530px" }}
                                     src={activeProject.screenShots[1]}
                                     onClick={(e) => this.toggleExpandedScreen(e.target.src)}
                                     alt="App screen"
@@ -103,7 +103,7 @@ class AppScreensPanel extends Component {
                                 <img
                                     height={this.state.height - this.state.height * 0.63}
                                     width="100%"
-                                    style={{ borderRadius: "10px", marginTop: "2%" }}
+                                    style={{ borderRadius: "10px", marginTop: "2%", maxHeight: "530px" }}
                                     src={activeProject.screenShots[2]}
                                     onClick={(e) => this.toggleExpandedScreen(e.target.src)}
                                     alt="App screen"
@@ -124,6 +124,7 @@ class AppScreensPanel extends Component {
                             style={{
                                 display: "flex",
                                 flexDirection: "row",
+                                justifyContent: "center",
                                 zIndex: 7
                             }}
                             className={classNames({
@@ -139,22 +140,15 @@ class AppScreensPanel extends Component {
                                 }}
                             >
                                 <img
-                                    height={this.state.height - this.state.height * 0.5}
-                                    width="68%"
-                                    style={{
-                                        borderRadius: "10px",
-                                        marginRight: "2%",
-                                        marginLeft: "2%",
-                                        marginBottom: "8%"
-                                    }}
+                                    // height={this.state.height - this.state.height * 0.5}
+                                    // width="68%"
+                                    className="app-screenshots--web-lrg-img"
                                     src={activeProject.screenShots[0]}
                                     onClick={(e) => this.toggleExpandedScreen(e.target.src)}
                                     alt="App screen"
                                 />
                                 <img
-                                    height={this.state.height - this.state.height * 0.35}
-                                    width="26%"
-                                    style={{ borderRadius: "15px", marginTop: "2%" }}
+                                    className="app-screenshots--web-sml-img"
                                     src={activeProject.screenShots[1]}
                                     onClick={(e) => this.toggleExpandedScreen(e.target.src)}
                                     alt="App screen"

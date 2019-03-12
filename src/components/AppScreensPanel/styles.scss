@@ -51,7 +51,30 @@
 }
 
 .app-screenshots--large-image {
-  width: 28%;
+  width: auto;
+  max-width: 28%;
+  height: auto;
+  max-height: 70vh;
+  border-radius: 15px;
+  margin-top: 2%;
+}
+
+.app-screenshots--web-lrg-img {
+  border-radius: 10px;
+  margin-right: 2%;
+  margin-left: 2%;
+  margin-bottom: 8%;
+  width: 68%;
+  max-width: 1000px;
+  height: 50vh;
+  max-height: 600px;
+}
+
+.app-screenshots--web-sml-img {
+  width: 26%;
+  max-width: 450px;
+  height: 65vh;
+  max-height: 850px;
   border-radius: 15px;
   margin-top: 2%;
 }
@@ -66,10 +89,14 @@
 
 @media screen and (min-width: 1600px) {
   .app-screenshots--large-image {
-    width: 26%;
+    width: auto;
+    max-width: 450px;
+    height: auto;
+    max-height: 950px;
   }
 
   .app-screenshots--small-images-column {
     width: 15%;
+    max-width: 280px;
   }
 }

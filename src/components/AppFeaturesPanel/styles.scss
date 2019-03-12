@@ -1,7 +1,6 @@
 .app-features-panel {
   display: flex;
   flex-direction: column;
-  justify-content: "center";
   position: relative;
   width: 35%;
   height: 100%;
@@ -47,10 +46,17 @@
   overflow: hidden;
 }
 
+.app-details--tech-list {
+  margin-top: 20%;
+  margin-right: 30px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
 ul {
   list-style-type: none;
 
   li {
-    padding: 1.5em;
+    padding: 1.5em 0 1.5em 0;
   }
 }

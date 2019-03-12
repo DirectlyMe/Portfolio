@@ -38,7 +38,7 @@ class AppFeaturesPanel extends Component {
 
   render() {
     const { name, features, technologies, github } = this.props.activeProject;
-    const featureList = features.map(feature => <li key={feature}>{feature}</li>);
+    const featureList = features.map(feature => <li style={{ width: "100%", marginRight: "40px", }} key={feature}>{feature}</li>);
 
     const techList = technologies.map((technology, index) => (
       <Tag key={index} text={technology.name} color={technology.color} />
@@ -71,10 +71,12 @@ class AppFeaturesPanel extends Component {
           </div>
           <ul
             style={{
+              display: "flex",
+              alignItems: "center",
+              flexDirection: "column",
+              textAlign: "center",
               marginTop: "5%",
               marginBottom: "5%",
-              marginRight: "2.2em",
-              textAlign: "center",
               fontSize: "18px",
               fontWeight: "300"
             }}
@@ -83,7 +85,8 @@ class AppFeaturesPanel extends Component {
           </ul>
           <a
             style={{
-              marginLeft: "47%",
+              display: "flex",
+              justifyContent: "center",
               color: "black"
             }}
             href={github}
@@ -91,12 +94,7 @@ class AppFeaturesPanel extends Component {
             <FontAwesomeIcon icon={faGithub} size="3x" />
           </a>
           <ul
-            style={{
-              marginTop: "20%",
-              marginRight: ".3em",
-              paddingBottom: "5px",
-              textAlign: "center"
-            }}
+            className="app-details--tech-list"
           >
             {techList}
           </ul>
