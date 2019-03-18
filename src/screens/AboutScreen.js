@@ -50,7 +50,7 @@ class AboutScreen extends Component {
             >
               <img
                 alt="Me"
-                src="https://scontent.fslc1-1.fna.fbcdn.net/v/t1.0-9/17759876_277389296046627_4368098123657957279_n.jpg?_nc_cat=111&_nc_ht=scontent.fslc1-1.fna&oh=d779def61c1ea46461064d7c347ac178&oe=5C8BA316"
+                src="https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-9/17759876_277389296046627_4368098123657957279_n.jpg?_nc_cat=111&_nc_ht=scontent-lax3-1.xx&oh=824fb6337db0338e426659194b512a9f&oe=5D024A16"
                 width="450px"
                 height="450px"
                 style={{ borderRadius: "50%", marginTop: "10%", marginLeft: "4%", boxShadow: "3px 2px 3px rgba(0,0,0,.5)" }}
