@@ -1,32 +1,46 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/fontawesome-free-brands";
 import Slider from "../Slider/Slider";
 import Tag from "../Tag";
-import { faGithub } from "@fortawesome/fontawesome-free-brands";
 import { ReactComponent as DownArrow } from "../../svgs/DownArrow.svg";
+import { projectTypes } from "../../ProjectsData";
 import "./styles.scss";
 
 class ProjectMobile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showMore: false
+      showMore: false,
+      screenShots: []
     };
 
     this.SliderRef = React.createRef();
   }
 
+  componentDidMount() {
+    if (this.props.project.type === projectTypes.web && this.props.project.screenShots.length === 4) {
+      this.props.project.screenShots.shift();
+
+      this.setState({ screenShots: this.props.project.screenShots });
+      console.log(`ScreenShots ${this.state.screenShots.length}`);
+    } else {
+      this.setState({ screenShots: this.props.project.screenShots });
+    }
+  }
+
   scrollToSlider = () => {
     setTimeout(() => {
       window.scrollTo({
-        top: this.SliderRef.current.offsetTop - 160, 
+        top: this.SliderRef.current.offsetTop - 100, 
         behavior: "smooth"
       });
     }, 500);
   }
 
   render() {
-    const { name, features, technologies, github, screenShots } = this.props.project;
+    const { name, features, technologies, github } = this.props.project;
+    let { screenShots } = this.state;
 
     const appFeatures = features.map(feature => (
       <li key={feature} style={{ padding: ".7em" }}>
@@ -68,12 +82,7 @@ class ProjectMobile extends Component {
             <FontAwesomeIcon icon={faGithub} size="3x" />
           </a>
           <ul
-            style={{
-              marginTop: "10%",
-              marginRight: "8%",
-              marginBottom: "4%",
-              textAlign: "center"
-            }}
+            className="tech-list"
           >
             {techList}
           </ul>
@@ -116,12 +125,7 @@ class ProjectMobile extends Component {
               <FontAwesomeIcon icon={faGithub} size="3x" />
             </a>
             <ul
-              style={{
-                marginTop: "10%",
-                marginRight: "8%",
-                marginBottom: "4%",
-                textAlign: "center"
-              }}
+              className="tech-list"
             >
               {techList}
             </ul>

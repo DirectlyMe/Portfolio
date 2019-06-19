@@ -7,7 +7,7 @@ const ProjectTabs = ({ projects, activeProject, selectProjectFunc }) => {
       return (
         <li
           key={project.name}
-          style={{ backgroundColor: "rgba(255, 255, 255, 0.733)"}}
+          style={{ backgroundColor: "rgba(255, 255, 255, 0.733)", boxShadow: "2px 2px 3px rgba(0,0,0,.5)"}}
         >
           {project.name}
         </li>

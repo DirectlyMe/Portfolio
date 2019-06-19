@@ -3,14 +3,10 @@ import "./styles.scss";
 
 const Slide = ({ image }) => {
   return (
-    <div
+    <img
       className="slide"
-      style={{
-        backgroundImage: `url(${image})`,
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: '50% 60%'
-      }}
+      alt="project"
+      src={image}
     />
   );
 };

@@ -37,12 +37,20 @@
   animation-fill-mode: forwards;
 }
 
+.about--icon-link {
+  color: black;
+  
+  &:visited {
+    color: black;
+  }
+}
+
 @media screen and (max-width: 499px) {
   .about-wrapper {
     display: flex;
     flex-direction: column;
     width: 100%;
-    background-color: #FCFFB3;
+    background-color: #fcffb3;
     margin-top: 60px;
   }
 }

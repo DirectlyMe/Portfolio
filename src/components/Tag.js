@@ -7,12 +7,13 @@ const Tag = ({ color, text }) => (
       width: "15px",
       backgroundColor: `#${color}`,
       boxSizing: "border-box",
-      border: "1px solid",
-      fontSize: "12px",
+      fontSize: "14px",
+      fontWeight: "500",
       display: "inline",
-      borderRadius: "20px",
+      borderRadius: "15px",
       padding: "1em",
-      margin: ".5em"
+      margin: ".5em",
+      boxShadow: "2px 2px 3px rgba(0,0,0,.5)"
     }}
   >
     {text}

@@ -2,15 +2,18 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   list-style-type: none;
   width: 100%;
+  margin-top: 3%;
 
   li {
     cursor: pointer;
-    font-size: 22px;
+    font-size: 24px;
+    font-weight: 400;
     border-radius: 10px;
     box-sizing: border-box;
-    padding: .5em;
+    padding: 8px 10px;
     margin: .5em;
     
 
@@ -23,6 +26,7 @@
       animation-name: on-hover;
       animation-duration: .7s;
       animation-fill-mode: forwards;
+      box-shadow: 2px 2px 3px rgba(0,0,0,.5);
     }
   }
 }

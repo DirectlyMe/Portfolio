@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import classNames from "classnames";
-import Swipeable from "react-swipeable";
+import { Swipeable } from "react-swipeable";
 import Slide from "./Slide";
 import { ReactComponent as RightArrow } from "../../svgs/RightArrow.svg";
 import { ReactComponent as LeftArrow } from "../../svgs/LeftArrow.svg";
